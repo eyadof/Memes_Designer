@@ -1,0 +1,105 @@
+<html>
+	<head>
+		<meta charset="utf-8" >
+		<title>Mems&nbspDesigner</title>
+		<link href="Mems_designer.css" type="text/css" rel="stylesheet"/>
+		<link href="smoothness/jquery-ui-1.8.21.custom.css" type="text/css" rel="stylesheet"/> 
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="jquery-ui.js"></script>
+		<script type="text/javascript" src="drag_and_drop.js"></script>
+		<script type="text/javascript" src="html2canvas.js"></script>
+		<script type="text/javascript" src="jquery.tools.js"></script>
+		<script type="text/javascript" src="html2canvas.min.js"></script>
+		<script type="text/javascript" src="Mems_designer.js"></script>
+		<link rel="stylesheet" media="screen" type="text/css" href="colorpicker/css/colorpicker.css" />
+		<script type="text/javascript" src="colorpicker/js/colorpicker.js"></script>
+	</head>
+	<body>
+	<div id = "overlay1" class = "simple_overlay">
+	<center>
+		<div style="border-radius: 10px;background-color:white;border-style:solid;border-color: #9EDAED;margin-top:150px;width:400px;height:50px;" >
+		<input type="file" id="fileAdder">
+		<br>
+		<input type="button" id="fileadderbutton" onclick="addImage()" value="add" >
+		<input type="button" onclick="$('#overlay1').fadeOut();$('label').removeClass('ui-state-active');" value="cancel" >
+		</div>
+	</center>
+	</div>
+	<div id = "overlay" class = "simple_overlay">
+	<center>
+		<div  onmouseover="$('#savetoolbar').fadeIn(function(){$('#savetoolbar').css('top',$('#fresault').css('height').split('px')[0] - 19 + 'px');$('#savetoolbar').css('width',$('#fresault').css('width'));$('#savetoolbar').css('margin-left',($(window).width() - $('#fresault').css('width').split('px')[0] )/2);})">
+			<img id="fresault"></img>
+			<div id="savetoolbar">
+					<div class = "saveBtn" onclick="saveImage();">save</div>
+					<div class = "saveBtn" onclick="$('#overlay').hide();$('#overlay').siblings().toggle();">close</div>
+			</div>
+		</div>
+	</center> 
+	</div>
+	<div class="mems_bar" id="mems_bar">
+			<div id = "PBar"></div>
+			</div>
+				<div class="arrow" onclick="fixleft()" id="ar1"> <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>&laquo; </div>
+		<div class="style">
+		<center>
+			<div id="toolbar">
+				<div id="radio" >
+					<input type="radio" id="radio1" name="radio" onclick="toImage()" /><label for="radio1">Get The Image</label>
+					<input type="radio" id="radio2" name="radio" onclick="$('.tpanel').fadeIn()"/><label for="radio2">Add Text</label>
+					<input type="radio" id="radio3" name="radio" onclick="resizewsp()" /><label for="radio3">Resize workspace</label>
+					<input type="radio" id="radio4" name="radio" onclick="$('#overlay1').fadeIn();" /><label for="radio4">Add New Image</label>
+				</div>
+				</div>
+				</center>
+				<div class = "tpanel">
+					<center><input type="text" class="text" onkeyup="changef('text')" /></center>
+					<br>
+					<center>
+					<label for="font" > Font Size : </label>
+					<select id="font" value="font size" onchange="changef('size')" >
+						<option value="5px" >5</option>
+						<option value="6px" >6</option>
+						<option value="7px" >7</option>
+						<option value="8px" >8</option>
+						<option value="9px" >9</option>
+						<option value="10px" >10</option>
+						<option value="11px" >11</option>
+						<option value="12px" >12</option>
+						<option value="14px" >14</option>
+						<option value="16px" >16</option>
+						<option value="18px" >18</option>
+						<option value="20px" >20</option>
+						<option value="22px" >22</option>
+						<option value="24px" >24</option>
+						<option value="26px" >26</option>
+						<option value="28px" >28</option>
+						<option value="30px" >30</option>
+						<option value="34px" >34</option>
+						<option value="38px" >38</option>
+						<option value="42px" >42</option>
+						<option value="44px" >44</option>
+						<option value="48px" >48</option>
+						<option value="52px" >52</option>
+						<option value="60px" >60</option>
+						<option value="70px" >72</option>
+					</select>
+					</center>
+					<br/>
+					<center><div id="colorPicker"></div></center>
+					<br/>
+					<center><div id="preview" class="Text" ><div></center>
+					<center><input type="button" onclick="addText()" value="add" />
+					<input type="button" onclick="$('.tpanel').fadeOut(function(){$('label').removeClass('ui-state-active')})" value="cansel" />
+					</center>
+				</div>
+			</div>
+		</div>
+		<div class="workspace" id="wsp1"  style="margin-left:400px;width:600px;height:500px"></div>
+		<div id="subMenu">
+			<div class="subMenuItem" onclick="remove(this.parentNode.className)">remove</div>
+			<div class="subMenuItem" onclick="toFront(this.parentNode.className)">bring to front</div>
+			<div class="subMenuItem" onclick="toBack(this.parentNode.className)" >bring to back</div>
+			<div class="subMenuItem" onclick=" makeBackground(this.parentNode.className)">make background</div>
+		</div>
+	</body>
+</html>
