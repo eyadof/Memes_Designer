@@ -1,3 +1,18 @@
+var _startX = 0;            // mouse starting positions
+var _startY = 0;
+var _offsetX = 0;           // current element offset
+var _offsetY = 0;
+var _dragElement;           // needs to be passed from OnMouseDown to OnMouseMove
+var _oldZIndex = 0;         // we temporarily increase the z-index during drag
+var wsp;
+var mwspx;
+var mwspy;
+var Mwspx;
+var Mwspy;
+
+var _Left;
+var _Top;
+
 $(document).ready(function(){
 		wsp = document.getElementById("wsp1");
 		$("#colorPicker").ColorPicker(
@@ -285,4 +300,15 @@ $(document).ready(function(){
 		$("#"+id).mousemove(function(event){
 			$("#"+id).css("-moz-transform","rotate("+event+"deg)")
 		});
+	}
+	function ExtractNumber(value)
+	{
+	    var n = parseInt(value);
+	    return n == null || isNaN(n) ? 0 : n;
+	}
+
+	// this is simply a shortcut for the eyes and fingers
+	function gid(id)
+	{
+	    return document.getElementById(id);
 	}
