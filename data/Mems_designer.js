@@ -84,23 +84,8 @@ $(document).ready(function(){
 			  		 
 			  	});
 			  	$(".PFrameO").draggable({helper:'clone'});
-});
-			function toggle(id_name,sid)
-			{
-				var li = document.getElementById(id_name);
-				var sli= document.getElementById(sid);
-				if(li.style.listStyle == "circle outside none")
-				{
-					li.style.listStyle = "";
-					sli.style.listStyle= "circle outside none";
-				}
-				else
-				{
-					li.style.listStyle = "circle outside none";
-					sli.style.listStyle = "";
-				}
-				
-			}
+				});
+			
 			function resize(id)
 			{
 				
